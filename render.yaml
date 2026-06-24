@@ -1,0 +1,39 @@
+# ═══════════════════════════════════════════════════════════
+#  Render Blueprint — Risqué Backend
+# ═══════════════════════════════════════════════════════════
+#  Deploy: Connect your repo on Render Dashboard, or use
+#          render.yaml for Infrastructure as Code.
+#
+#  This file goes in the BACKEND repo root. If deploying
+#  from the monorepo, set Root Directory to "risque_backend"
+#  in the Render Dashboard.
+# ═══════════════════════════════════════════════════════════
+
+services:
+  - type: web
+    name: risque-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: MONGO_DB_URI
+        sync: false
+      - key: ALPHA_VANTAGE_API_KEY
+        sync: false
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: "587"
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JAVA_OPTS
+        value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"

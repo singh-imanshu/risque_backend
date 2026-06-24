@@ -1,0 +1,28 @@
+# Build output
+target/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Environment secrets
+src/main/resources/.env.properties
+
+# Maven wrapper JAR (downloaded at build time)
+.mvn/wrapper/maven-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+LICENSE
